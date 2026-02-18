@@ -28,6 +28,16 @@ def create_app(test_config=None):
     
     from . import db
     db.init_app(app)
+
+    db_path = os.path.join(app.instance_path, 'flaskr.sqlite')
+    if not os.path.exists(db_path):
+        with app.app_context():
+            db.init_db()  # creates tables if they don't exist
+
+    # Simple page
+    @app.route('/hello')
+    def hello():
+        return 'Hello, world'
     
     from . import auth
     app.register_blueprint(auth.bp)
