@@ -34,10 +34,11 @@ def create_app(test_config=None):
         with app.app_context():
             db.init_db()  # creates tables if they don't exist
 
-    # Simple page
-    @app.route('/hello')
-    def hello():
-        return 'Hello, world'
+    if 'hello' not in app.view_functions:
+        # Simple page
+        @app.route('/hello')
+        def hello():
+            return 'Hello, world'
     
     from . import auth
     app.register_blueprint(auth.bp)
