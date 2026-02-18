@@ -1,1 +1,20 @@
-.venv
+# ---------------------------
+# Python & Virtual Environment
+# ---------------------------
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+.env/
+
+# pipenv / poetry
+Pipfile.lock
+poetry.lock
+
+# ---------
